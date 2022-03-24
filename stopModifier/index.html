@@ -4,15 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <!-- <script type="text/javascript" src="../vue.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <!-- The following line causing an error  -->
+    <!-- <script type="text/javascript" src="../vue.min.js"></script> -->
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
+        <!-- Two ways for stop propagation -->
+        <!-- 1)using self modifier -->
+        <!-- <div v-on:mouseover.self="rect1" style="background-color: blue;width:200px;height:200px">
+            <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
+        </div> -->
+        <!-- Or another way -->
+        <!-- 2)using stop modifier -->
+        <!-- <div v-on:mouseover="rect1" style="background-color: blue;width:200px;height:200px">
+            <div v-on:mouseover.stop="rect2" style="background-color: red;width:100px;height:100px"></div>
+        </div> -->
+        <!-- 3)Once modifier  -->
+        <!-- <div v-on:mouseover.once="rect1" style="background-color: blue;width:200px;height:200px">
+            <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
+        </div> -->
+         <!-- 4)Capture modifier  -->
+         <!-- with capture make the direct parent handler fires before the child handler -->
+         <!-- <div v-on:mouseover.capture="rect3" style="background-color: black;width:300px;height:300px">
+         <div v-on:mouseover.capture="rect1" style="background-color: blue;width:200px;height:200px">
+            <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
+        </div> -->
         {{title}}
-        <div>
-            
-  <script >
+    <div>
+
+  </body>
+  <script type="text/javascript">
     var vm=new Vue({
       el: "#app",
       data: {
@@ -31,5 +55,4 @@
       }
     });
   </script>
-  </body>
 </html>
