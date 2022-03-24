@@ -7,7 +7,7 @@
     <!-- <script type="text/javascript" src="../vue.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <!-- The following line causing an error  -->
-    <!-- <script type="text/javascript" src="../vue.min.js"></script> -->
+    <!-- <script type="text/javascript" src="../vue.js"></script> -->
     <title>Document</title>
   </head>
   <body>
@@ -32,15 +32,30 @@
          <div v-on:mouseover.capture="rect1" style="background-color: blue;width:200px;height:200px">
             <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
         </div> -->
-        {{title}}
-    <div>
+    <!-- Keyboard modifiers  -->
+    <input v-on:keyup.ctrl.enter="console.log('hiii')" >
+    <input v-on:click.left="console.log('altShift')" >
+    <!-- Shorthand for v-bind:id -> :id --> 
+    <!-- || and for v-on:click -> @click -->
+    <!-- <div :id="title" :class="title" @click="console.log('hii')">
+        hii
+    </div> -->
+    <!-- v-once modifier  -->
+    <div >
+        initial value : {{counter}}
+        <div>{{c}}</div>
+    </div>
+    <button class="btn btn-primary" @click="counter++;c++;">hiiii</button>
+</div>
 
   </body>
   <script type="text/javascript">
     var vm=new Vue({
       el: "#app",
       data: {
-          title:"mina"
+          title:"mina",
+          counter:0,
+          c:10
       },
       methods:{
           rect1:function(){
@@ -55,4 +70,5 @@
       }
     });
   </script>
+  Watch again V16
 </html>
