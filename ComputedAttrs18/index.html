@@ -44,28 +44,52 @@
 
       <!-- ----------------------- -->
       <!-- Style binding v.22 -->
-      <div :style="{width:!active?'100px':'300px',height:'200px',background:'black'}"></div>
+      <!-- <div :style="style"></div> -->
+
+      <!-- ----------------------- -->
+      <!-- v-text directive v.23 -->
+      <!-- {{first_name}}
+      <br />
+      <div v-text="first_name"></div> -->
+
+      <!-- ----------------------- -->
+      <!-- v-if directive v.24 -->
+      <div v-if="likes<5">Likes <5</div>
+      <div v-else-if="likes=5">Likes =5</div>
+      <div v-else>Likes >5</div>
+      <button @click="likeHandler" class="btn btn-primary">Increment</button>
+      <div v-text="likes"></div>
     </div>
   </body>
   <script type="text/javascript">
     var vm = new Vue({
       el: "#app",
       data: {
-        // first_name: "mina",
+        first_name: "mina",
         // last_name: "malak",
         // first_nameM: "mina",
         // last_nameM: "malak",
-        likes: 5,
+        likes: 4,
         isLiked: false,
-        active: true
+        active: true,
+        style: {
+          width: !this.active ? "100px" : "300px",
+          height: "200px",
+          background: "black",
+        },
       },
       methods: {
         // full_nameM:function(){
         //   console.log("Method called")
         //   return this.first_nameM+" "+this.last_nameM
         // }
+        likeHandler:function(){
+          console.log('called');
+          return this.likes++;
+        },
       },
       computed: {
+        
         // full_name:function(){
         //   console.log("computed called")
         //   return this.first_name+" "+this.last_name
@@ -73,15 +97,15 @@
         isLikedClass: function () {
           return this.isLiked ? "liked" : "";
         },
-        objClass: function (){
-          return {blue:this.active,red:!this.active,'has-border':true}
-        }
-      },
-      watch: {
-        isLiked: function (value) {
-          return value ? this.likes++ : this.likes--;
+        objClass: function () {
+          return { blue: this.active, red: !this.active, "has-border": true };
         },
       },
+      // watch: {
+      //   isLiked: function (value) {
+      //     return value ? this.likes++ : this.likes--;
+      //   },
+      // },
     });
   </script>
   <!-- <style  type="text/css">
