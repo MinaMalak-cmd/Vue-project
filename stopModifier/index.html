@@ -5,70 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <script type="text/javascript" src="../vue.js"></script> -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"
+    ></script>
     <!-- The following line causing an error  -->
     <!-- <script type="text/javascript" src="../vue.js"></script> -->
     <title>Document</title>
   </head>
   <body>
     <div id="app">
-        <!-- Two ways for stop propagation -->
-        <!-- 1)using self modifier -->
-        <!-- <div v-on:mouseover.self="rect1" style="background-color: blue;width:200px;height:200px">
+      <!-- Two ways for stop propagation -->
+      <!-- 1)using self modifier -->
+      <!-- <div v-on:mouseover.self="rect1" style="background-color: blue;width:200px;height:200px">
             <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
         </div> -->
-        <!-- Or another way -->
-        <!-- 2)using stop modifier -->
-        <!-- <div v-on:mouseover="rect1" style="background-color: blue;width:200px;height:200px">
+      <!-- Or another way -->
+      <!-- 2)using stop modifier -->
+      <!-- <div v-on:mouseover="rect1" style="background-color: blue;width:200px;height:200px">
             <div v-on:mouseover.stop="rect2" style="background-color: red;width:100px;height:100px"></div>
         </div> -->
-        <!-- 3)Once modifier  -->
-        <!-- <div v-on:mouseover.once="rect1" style="background-color: blue;width:200px;height:200px">
+      <!-- 3)Once modifier  -->
+      <!-- <div v-on:mouseover.once="rect1" style="background-color: blue;width:200px;height:200px">
             <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
         </div> -->
-         <!-- 4)Capture modifier  -->
-         <!-- with capture make the direct parent handler fires before the child handler -->
-         <!-- <div v-on:mouseover.capture="rect3" style="background-color: black;width:300px;height:300px">
+      <!-- 4)Capture modifier  -->
+      <!-- with capture make the direct parent handler fires before the child handler -->
+      <!-- <div v-on:mouseover.capture="rect3" style="background-color: black;width:300px;height:300px">
          <div v-on:mouseover.capture="rect1" style="background-color: blue;width:200px;height:200px">
             <div v-on:mouseover="rect2" style="background-color: red;width:100px;height:100px"></div>
         </div> -->
-    <!-- Keyboard modifiers  -->
-    <input v-on:keyup.ctrl.enter="console.log('hiii')" >
-    <input v-on:click.left="console.log('altShift')" >
-    <!-- Shorthand for v-bind:id -> :id --> 
-    <!-- || and for v-on:click -> @click -->
-    <!-- <div :id="title" :class="title" @click="console.log('hii')">
+      <!-- Keyboard modifiers  -->
+      <!-- <input v-on:keyup.ctrl.enter="console.log('hiii')" >
+    <input v-on:click.left="console.log('altShift')" > -->
+      <!-- Shorthand for v-bind:id -> :id -->
+      <!-- || and for v-on:click -> @click -->
+      <!-- <div :id="title" :class="title" @click="console.log('hii')">
         hii
     </div> -->
-    <!-- v-once modifier  -->
-    <div >
+      <!-- v-once modifier  -->
+      <!-- <div >
         initial value : {{counter}}
         <div>{{c}}</div>
     </div>
-    <button class="btn btn-primary" @click="counter++;c++;">hiiii</button>
-</div>
-
+    <div v-once>
+        initial value : {{counter}}
+        <div>{{c}}</div>
+    </div>
+    <button class="btn btn-primary" @click="counter++;c++;">Increment values</button> -->
+      <!-- Two way data binding using v-model  -->
+      <input v-model="value" @change="console.log($event.target.value)" />
+      <br />
+      {{value}}
+    </div>
   </body>
   <script type="text/javascript">
-    var vm=new Vue({
+    var vm = new Vue({
       el: "#app",
       data: {
-          title:"mina",
-          counter:0,
-          c:10
+        title: "mina",
+        counter: 0,
+        c: 10,
+        value: "",
       },
-      methods:{
-          rect1:function(){
-              console.log('hover on rect1 ');
-          },
-          rect2:function(){
-              console.log('hover on rect2 ');
-          },
-          rect3:function(){
-              console.log('hover on rect3 ');
-          }
-      }
+      methods: {
+        rect1: function () {
+          console.log("hover on rect1 ");
+        },
+        rect2: function () {
+          console.log("hover on rect2 ");
+        },
+        rect3: function () {
+          console.log("hover on rect3 ");
+        },
+      },
     });
   </script>
-  Watch again V16
 </html>

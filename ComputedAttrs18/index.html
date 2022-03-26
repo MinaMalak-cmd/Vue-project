@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script type="text/javascript" src="../vue.js"></script> -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"
+    ></script>
+    <!-- The following line causing an error  -->
+    <!-- <script type="text/javascript" src="../vue.js"></script> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Computed values  -->
+      <!-- Computed bycysh l return value l7d 
+      lma 7aga mn its dependents btt8yr -->
+      <!-- Computed Called :
+      <input v-model="first_name" />
+      <input v-model="last_name" />
+      <br />
+      {{full_name}}  
+      <br />
+      Method Called :
+      <input v-model="first_nameM" />
+      <input v-model="last_nameM" />
+      {{full_nameM()}}  -->
+      <!-- ------------------------- -->
+      <!-- Watch v19  -->
+      <!-- <h1>Watch Example</h1>
+      <div @click="isLiked=!isLiked"  :class="isLikedClass">{{likes}} likes</div> -->
+
+      <!-- Class binding v.20 -->
+      <!-- <div class="rect" :class="'red'"></div>
+      <div class="rect" :class="objClass"></div>
+      <button @click="active=!active">Toggle</button> -->
+      <!-- ----------------------- -->
+      <!-- Class binding with array v.21 -->
+      <!-- <div class="rect" :class="'red'"></div>
+      <div :class="['rect','has-border','blue',{red:true,blue:false}]"></div> -->
+
+      <!-- ----------------------- -->
+      <!-- Style binding v.22 -->
+      <div :style="{width:!active?'100px':'300px',height:'200px',background:'black'}"></div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        // first_name: "mina",
+        // last_name: "malak",
+        // first_nameM: "mina",
+        // last_nameM: "malak",
+        likes: 5,
+        isLiked: false,
+        active: true
+      },
+      methods: {
+        // full_nameM:function(){
+        //   console.log("Method called")
+        //   return this.first_nameM+" "+this.last_nameM
+        // }
+      },
+      computed: {
+        // full_name:function(){
+        //   console.log("computed called")
+        //   return this.first_name+" "+this.last_name
+        // },
+        isLikedClass: function () {
+          return this.isLiked ? "liked" : "";
+        },
+        objClass: function (){
+          return {blue:this.active,red:!this.active,'has-border':true}
+        }
+      },
+      watch: {
+        isLiked: function (value) {
+          return value ? this.likes++ : this.likes--;
+        },
+      },
+    });
+  </script>
+  <!-- <style  type="text/css">
+    .liked{
+      font-weight: bold;
+      color: blue;
+    }
+  </style> -->
+  <style type="text/css">
+    .has-border {
+      box-sizing: border-box;
+      border: solid 1px #ccc;
+    }
+    .rect {
+      width: 100px;
+      height: 100px;
+    }
+    .blue {
+      background: blue;
+    }
+    .red {
+      background: red;
+    }
+  </style>
+</html>
