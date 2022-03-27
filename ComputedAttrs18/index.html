@@ -54,12 +54,55 @@
 
       <!-- ----------------------- -->
       <!-- v-if directive v.24 -->
-      <div v-if="likes<5">Likes <5</div>
-      <div v-else-if="likes=5">Likes =5</div>
+      <!-- <div v-if="likes<5">Likes <5</div>
+      <div v-else-if="likes==5">Likes =5</div>
       <div v-else>Likes >5</div>
-      <button @click="likeHandler" class="btn btn-primary">Increment</button>
-      <div v-text="likes"></div>
-    </div>
+      <button @click="likes++" class="btn btn-primary">Increment</button>
+      <button @click="likes--" class="btn btn-danger">Decrement</button>
+      <div v-text="likes"></div> -->
+
+      <!-- ----------------------- -->
+      <!-- grouping v-if and template tag v.25 -->
+      <!-- <template v-if="likes<5">
+        <div>Likes <5</div>
+        <div>div2</div>
+        <div>div3</div>
+      </template> -->
+
+      <!-- ----------------------- -->
+      <!-- v-show v.26 -->
+      <!-- v-show is better than v-if from performance wise -->
+      <!-- <div v-if="active">Hii</div>
+      <div v-show="active">Hii</div>
+      <button @click="active=!active" class="btn btn-primary">Show</button> -->
+
+       <!-- Looping v.27 -->
+       <template v-if="false">
+         <ul>
+           <template v-for="(item,index) in items">
+             <li>{{index}}:{{item}}</li>
+            </template>
+         </ul>
+       </template>
+        <input v-model="number" >
+        <button @click="addToList" class="btn btn-primary">Add</button> 
+        <ul>
+          <template v-for="(item,index) in obj">
+            <li>Name :{{item.name}}, Age:{{item.age}}
+
+              <button @click="remove(index)" class="btn btn-primary">remove</button> 
+              <button @click="isUpdated=!isUpdated;currentElement=index" class="btn btn-primary">update</button> 
+              <span v-show="isUpdated&&currentElement==index">
+                <br />
+                <br />
+                <input type="text" v-model="item.name">
+                <input type="number" v-model="item.age">
+                <br />
+                <br />
+              </span>
+            </li>
+           </template>
+         </ul>
   </body>
   <script type="text/javascript">
     var vm = new Vue({
@@ -72,6 +115,11 @@
         likes: 4,
         isLiked: false,
         active: true,
+        number:null,
+        isUpdated:false,
+        currentElement:null,
+        items:[1,2,3,4,5,6],
+        obj:[{name:'Mina',age:12},{name:'Malak',age:32},{name:'MKM',age:18}],
         style: {
           width: !this.active ? "100px" : "300px",
           height: "200px",
@@ -83,13 +131,20 @@
         //   console.log("Method called")
         //   return this.first_nameM+" "+this.last_nameM
         // }
-        likeHandler:function(){
-          console.log('called');
-          return this.likes++;
+        addToList:function(){
+            this.items.push(this.number);
+            this.number=null;
+        },
+        remove:function(index){
+          console.log(index)
+          this.obj.splice(index,1);
+        },
+        likeHandler: function () {
+          console.log("called");
+          this.likes += 1;
         },
       },
       computed: {
-        
         // full_name:function(){
         //   console.log("computed called")
         //   return this.first_name+" "+this.last_name
