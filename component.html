@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"
+    ></script>
+    <script src="https://use.fontawesome.com/f8f42c5404.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="todoapp">
+      <product>1</product>
+      <product>2</product>
+      <product>3</product>
+    </section>
+  </body>
+  <script type="text/javascript">
+    //Slots like children in react
+    //data in Vue component must be function
+    //returns object
+    //   Tips for components
+    // 1)Components must be created before vue instance
+    // 2)Component name shouldn't have spaces but - if necessary
+    //min 3 v.47
+    Vue.component("product", {
+      template: "<h1>{{title}}<slot></slot></h1>",
+      data: function () {
+        return { title: "Mina" };
+      },
+    });
+    new Vue({
+      el: ".todoapp",
+      data: {},
+    });
+  </script>
+</html>
