@@ -1,23 +1,4 @@
-//
-<template>
-  //
-  <div class="hello">
-    //
-    <h1>Card Component</h1>
-    //
-  </div>
-  //
-</template>
-//
-<script lang="ts">
-// import { Component, Prop, Vue } from 'vue-property-decorator';
 
-// @Component
-// export default class CardComponent extends Vue {
-// //   @Prop() private msg!: string;
-// }
-//
-</script>
 <template>
   <b-container class="card">
     <b-row>
@@ -35,7 +16,7 @@
             <hr />
             <b-card-text> إحصائيات اليوتيوب <i class="fi fi-brands-youtube"></i></b-card-text>
            <hr />
-           <ul>
+           <ul class="card--list">
              <li>1</li>
              <li>1</li>
              <li>1</li>
@@ -73,5 +54,10 @@ export default {
 }
  .card--header{
     text-align:start;
+ }
+ .card--list{
+    list-style-type:none;
+    &_li{
+    }
  }
 </style>
