@@ -35,7 +35,7 @@
                 <i class="far fa-comments"></i> 96 تعليق
               </li>
             </ul>
-            <b-button>Button</b-button>
+             <b-button class="w-100" href="#" variant="secondary">شاهد الآن</b-button>
           </b-card>
         </div>
       </b-col>
