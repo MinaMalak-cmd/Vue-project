@@ -5,18 +5,19 @@
   </div>
 </template>
 <script lang="ts">
-  import { Component,Vue} from 'vue-property-decorator';
-  import CardComponent from '@/components/CardComponent.vue';
-  @Component({
-    components:{
-      CardComponent
-    }
-  })
-  export default class ContactView extends Vue {}
+import { Component, Vue } from "vue-property-decorator";
+import CardComponent from "@/components/CardComponent.vue";
+
+@Component({
+  components: {
+    CardComponent
+  }
+})
+export default class ContactView extends Vue {}
 </script>
 <style lang="scss" scoped>
-  .about{
-    direction:rtl;
-    text-align:rtl;
-  }
+.about {
+  direction: rtl;
+  text-align: rtl;
+}
 </style>
